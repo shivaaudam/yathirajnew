@@ -1,0 +1,199 @@
+<div ng-controller="profileController as profileCtrl" class="">
+<header id="head" class="secondary"></header>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 ">
+			<div class="alert alert-success" ng-if="updated">
+				{{ updated }}
+			</div>
+			<div class="alert alert-danger" ng-if="errorUpdate">
+				{{ errorUpdate }}
+			</div>
+			<form class="form-horizontal" ng-submit="updateProfile()">
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Name (Full name)">Name (Full name)</label>
+						<div class="col-md-4">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-user">
+									</i>
+								</div>
+								<input id="fullName" ng-model="profileData.fullName" name="fullName" type="text" placeholder="Name (Full name)" class="form-control input-md">
+							</div>
+							
+						</div>
+						
+					</div>
+					<!-- File Button -->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Upload photo">Upload photo</label>
+						<div class="col-md-4">
+							<input type="file" ng-model="profileData.profile_image" id="profilePic" name="profilePic" class="input-file" onchange="angular.element(this).scope().uploadedFile(this)">
+							<div class="profileImage"><img ng-src="{{image_source}}"></div>
+						</div>
+						
+					</div>
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Date Of Birth">Date Of Birth</label>
+						<div class="col-md-4">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-birthday-cake"></i>
+								</div>
+								<input id="dob" name="dob" type="text" ng-model="profileData.dob" placeholder="Date Of Birth" class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Father">Father's name</label>
+						<div class="col-md-4">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-male" style="font-size: 20px;"></i>
+								</div>
+								<input id="fathersName" name="fathersName" ng-model="profileData.fathersName" type="text" placeholder="Father's name" class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Mother">Mother's Name</label>
+						<div class="col-md-4">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-female" style="font-size: 20px;"></i>
+								</div>
+								<input id="motherName" name="motherName" ng-model="profileData.mothersName" type="text" placeholder="Mother's Name" class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Gender">Gender</label>
+						<div class="col-md-4">
+							<label class="radio-inline" for="Gender-0">
+								<input type="radio" name="Gender" id="Gender-0" ng-model="profileData.gender" value="1" checked="checked">
+								Male
+							</label>
+							<label class="radio-inline" for="Gender-1">
+								<input type="radio" name="Gender" ng-model="profileData.gender" id="Gender-1" value="2">
+								Female
+							</label>
+							<label class="radio-inline" for="Gender-2">
+								<input type="radio" ng-model="profileData.gender" name="Gender" id="Gender-2" value="3">
+								Other
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="radios">Marital Status:</label>
+						<div class="col-md-4">
+							<label class="radio-inline" for="radios-0">
+								<input type="radio" name="radios" ng-model="profileData.maritalStatus" id="radios-0" value="1" checked="checked">
+								Married
+							</label>
+							<label class="radio-inline" for="radios-1">
+								<input type="radio" ng-model="profileData.maritalStatus" name="radios" id="radios-1" value="2">
+								Unmarried
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Primary Occupation">Primary Occupation</label>
+						<div class="col-md-4">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-briefcase"></i>
+								</div>
+								<input id="Primary Occupation" ng-model="profileData.occupation" name="Primary Occupation" type="text" placeholder="Primary Occupation" class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Skills">Skills</label>
+						<div class="col-md-4">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-graduation-cap"></i>
+								</div>
+								<input id="Skills" ng-model="profileData.skills" name="Skills" type="text" placeholder="Skills" class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Phone number ">Phone number </label>
+						<div class="col-md-4">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-phone"></i>
+								</div>
+								<input id="Phone number " name="Phone number " ng-model="profileData.mobile" type="text" placeholder="Primary Phone number " class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Email Address">Email Address</label>
+						<div class="col-md-4">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-envelope-o"></i>
+								</div>
+								<input id="Email Address" ng-model="profileData.email" name="Email Address" type="text" placeholder="Email Address" class="form-control input-md">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Languages Known">Languages Known</label>
+						<div class="col-md-4">
+							<div class="checkbox">
+								<label for="Languages Known-0">
+									<input type="checkbox" name="Languages Known" id="Languages Known-0" value="1">
+									Nepali
+								</label>
+							</div>
+							<div class="checkbox">
+								<label for="Languages Known-1">
+									<input type="checkbox" name="Languages Known" id="Languages Known-1" value="2">
+									Newari
+								</label>
+							</div>
+							<div class="checkbox">
+								<label for="Languages Known-2">
+									<input type="checkbox" name="Languages Known" id="Languages Known-2" value="3">
+									English
+								</label>
+							</div>
+							<div class="checkbox">
+								<label for="Languages Known-3">
+									<input type="checkbox" name="Languages Known" id="Languages Known-3" value="4">
+									Hindi
+								</label>
+							</div>
+							<div class="othertop">
+								<label for="Languages Known-4">
+								</label>
+								<input type="input" name="LanguagesKnown" id="Languages Known-4"  placeholder="Other Language">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="Overview (max 200 words)">Overview (max 200 words)</label>
+						<div class="col-md-4">
+							<textarea class="form-control" rows="10"  id="Overview (max 200 words)" name="Overview (max 200 words)">Overview</textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" ></label>
+						<div class="col-md-4">
+							<button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-thumbs-up"></span>Submit</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="col-md-2 hidden-xs">
+			<img ng-model="profileData.profile_image" ng-src="{{profileData.profile_image ? rootPath+profileData.profile_image : 'http://websamplenow.com/30/userprofile/images/avatar.jpg'}}" class="img-responsive img-thumbnail ">
+		</div>
+	</div>
+</div>
+</div>

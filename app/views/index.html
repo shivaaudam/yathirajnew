@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ambika Audam</title>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<base href="/">
+		<link rel="stylesheet" href="app/assets/css/bootstrap.css">
+		<link rel="stylesheet" href="app/assets/css/style.css">
+	</head>
+	<body ng-app="psychology" ng-controller="mainController as mainCtrl">
+		<header>
+			
+		</header>
+		<main class="container">
+			<div class="navbar navbar-inverse">
+				<div class="container">
+					<div class="navbar-header">
+					 	<a href="/" class="navbar-brand"><span class=""></span>Ambika Audam</a>
+					</div>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#" ng-click="main.doLogout()">About</a></li>
+						<li><a href="#" ng-click="main.doLogout()">Contact</a></li>
+						<li><a href="#" ng-click="main.doLogout()">Services</a></li>
+						<li><a href="#" ng-click="main.doLogout()">Store</a></li>
+						<li><a href="/login" ng-click="main.doLogout()">Login</a></li>
+						<li><a href="/register" ng-click="main.doLogout()">Register</a></li>
+					</ul>
+				</div>
+			</div>
+			<div ng-view></div>
+		</main>
+		<footer>
+			<!-- <div class="panel-footer">Panel Footer</div> -->
+		</footer>
+		<script src="app/assets/js/angular.js"></script>
+		<script src="app/assets/js/angular-route.js"></script>
+		<script src="app/controllers/mainCtrl.js"></script>
+		<script src="app/controllers/registerCtrl.js"></script>
+		<script src="app/app.routes.js"></script>
+		<script src="app/app.js"></script>
+	</body>
+</html>

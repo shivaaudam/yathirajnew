@@ -1,0 +1,56 @@
+<div ng-controller="loginController as registerCtrl" class="">
+<header id="head" class="secondary"></header>
+	<div class="container">
+		<div class="row">
+			<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">Sign in</h1>
+				</header>
+				<div class="alert alert-danger" ng-if="login.errorMsg">
+					{{ login.errorMsg }}
+				</div>
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h3 class="thin text-center">Sign in to your account</h3>
+							<p class="text-center text-muted">If you are new to this site please <a href="#/signup">Register</a> here. If you are already registered please login by entering username/email and password in the below fields. </p>
+							<hr>
+							<form class="form-signin" name="signInForm" ng-submit="login.doLogin()" novalidate>
+								<div class="form-group" ng-class="{ 'has-error': signInForm.email.$touched && signInForm.email.$invalid }">
+									<div class="top-margin">
+										<label>Email <span class="text-danger">*</span></label>
+										<input type="text" id="email" name="email" ng-model="login.loginData.email" class="form-control" ng-pattern=" /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+									</div>
+									<div class="help-block" ng-messages="signInForm.email.$error" ng-if="signInForm.email.$touched">
+									   <p ng-message="required">Email is required.</p>
+									   <p ng-message="pattern">Please enter a valid email address.</p>
+									</div>
+								</div>
+								<div class="form-group" ng-class="{ 'has-error': signInForm.password.$touched && signInForm.password.$invalid }">
+									<div class="top-margin">
+										<label>Password <span class="text-danger">*</span></label>
+										<input type="password" id="password" name="password" ng-model="login.loginData.password" class="form-control" required>
+									</div>
+									<div class="help-block" ng-messages="signInForm.password.$error" ng-if="signInForm.password.$touched">
+									   <p ng-message="required">Password is required.</p>
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-lg-8">
+										<b><a href="">Forgot password?</a></b>
+									</div>
+									<div class="col-lg-4 text-right">
+										<button class="btn btn-action" ng-disabled="signInForm.$invalid" type="submit">Sign in</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+				
+			</article>
+		</div>
+	</div>
+</div>
