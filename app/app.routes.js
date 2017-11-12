@@ -29,5 +29,10 @@ angular.module('app.routes',['ui.router'])
 			}
 			
 		})
+		.state('login1',{
+			url:'/login1',
+			templateUrl:'app/views/pages/login.html'
+			
+		})
 		$locationProvider.html5Mode(true);
 	});
